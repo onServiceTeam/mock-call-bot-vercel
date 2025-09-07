@@ -1,0 +1,15 @@
+{
+  "name": "mock-call-bot-vercel",
+  "version": "0.1.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "openai": "^4.57.0",
+    "undici": "^6.19.8"
+  }
+}

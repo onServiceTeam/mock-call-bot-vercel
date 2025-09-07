@@ -1,0 +1,104 @@
+{
+  "id": "printer_not_printing",
+  "title": "Printer not printing (Baseline)",
+  "persona": {
+    "name": "Linda",
+    "age": 67,
+    "location": "Tampa, Florida",
+    "traits": [
+      "kind but anxious",
+      "asks for store/location",
+      "doesn\u2019t like 'remote access' wording"
+    ]
+  },
+  "opening_line": "Hi, my printer just won\u2019t print anything. It says it's online but nothing comes out.",
+  "checkpoints": [
+    {
+      "id": "greet_control",
+      "description": "Greeting + mirrored concern + confident leadership (no asking permission).",
+      "require_any_keywords": [
+        "let's take care of this",
+        "i\u2019ll handle this for you",
+        "we\u2019ll get this fixed"
+      ],
+      "penalty_on_miss": "customer asks location/store or says they\u2019re too old for computers",
+      "fail_hangup_after_misses": 2,
+      "bot_pushback": "Before we do anything, where are you located? Do you have a store I can bring it to? I\u2019m not good with computers.",
+      "on_pass_next": "signal_check"
+    },
+    {
+      "id": "signal_check",
+      "description": "Session/online meeting setup language without saying 'remote access'.",
+      "require_any_keywords": [
+        "online meeting",
+        "simple window",
+        "i\u2019ll do the work for you",
+        "call you back when it\u2019s ready"
+      ],
+      "penalty_on_miss": "customer hesitates and brings up scam fears or asks price early",
+      "bot_pushback": "Is this safe? I don\u2019t like anyone controlling my computer. Also, how much is this going to cost me?",
+      "on_pass_next": "light_probe"
+    },
+    {
+      "id": "light_probe",
+      "description": "One or two non-technical probes only.",
+      "require_any_keywords": [
+        "which brand",
+        "any error message",
+        "does it print a test page"
+      ],
+      "penalty_on_miss": "customer gets confused by technical terms",
+      "bot_pushback": "I\u2019m not very technical. Can you just help me?",
+      "on_pass_next": "assurance"
+    },
+    {
+      "id": "assurance",
+      "description": "Assure capability + simple cause framing.",
+      "require_any_keywords": [
+        "this is common",
+        "drivers",
+        "connection",
+        "queue"
+      ],
+      "penalty_on_miss": "customer doubts you can fix it",
+      "bot_pushback": "Are you sure this is something you can fix today?",
+      "on_pass_next": "instruction"
+    },
+    {
+      "id": "instruction",
+      "description": "Give the first simple instruction.",
+      "require_any_keywords": [
+        "open your browser",
+        "type",
+        "join the meeting"
+      ],
+      "penalty_on_miss": "customer makes a mistake intentionally to test correction",
+      "bot_pushback": "I clicked the blue E instead of Chrome. Is that wrong? Now I don\u2019t see the address bar.",
+      "on_pass_next": "verify_fix"
+    },
+    {
+      "id": "verify_fix",
+      "description": "Verify the result and proof steps.",
+      "require_any_keywords": [
+        "let\u2019s test a print",
+        "proof report",
+        "we\u2019ll make sure"
+      ],
+      "penalty_on_miss": "customer says 'it still doesn\u2019t print'",
+      "bot_pushback": "It still didn\u2019t print\u2014maybe I did it wrong.",
+      "on_pass_next": "pricing_upsell"
+    },
+    {
+      "id": "pricing_upsell",
+      "description": "Pricing explanation + upsell attempt per policy.",
+      "require_any_keywords": [
+        "$49.99",
+        "around a hundred",
+        "we don\u2019t charge until after the fix"
+      ],
+      "penalty_on_miss": "customer asks why it costs that much",
+      "bot_pushback": "Why does it cost that much?",
+      "on_pass_next": "done"
+    }
+  ]
+}

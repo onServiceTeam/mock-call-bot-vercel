@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock Call Bot Lab (MVP)</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mock Call Bot Lab</h1>
+      <p class="sub">Browser mic → Whisper STT → GPT reply → ElevenLabs TTS</p>
+    </header>
+
+    <section class="card">
+      <h2>Login</h2>
+      <p>Enter the passcode to access the lab.</p>
+      <div class="row">
+        <input id="passcode" placeholder="Passcode" type="password">
+        <button id="btnLogin">Enter</button>
+      </div>
+      <p id="loginStatus" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Scenario</h2>
+      <div class="row">
+        <label for="scenario">Choose:</label>
+        <select id="scenario">
+          <option value="printer_not_printing">Printer not printing (Baseline)</option>
+        </select>
+        <button id="btnStart">Start New Session</button>
+        <button id="btnEnd">End & Score</button>
+      </div>
+      <p class="muted">Tip: keep responses concise and follow Trust‑Flow language.</p>
+    </section>
+
+    <section class="card">
+      <h2>Talk</h2>
+      <div class="row">
+        <button id="btnRecord">🎙️ Hold to Speak</button>
+        <audio id="botAudio" controls></audio>
+      </div>
+      <p id="recStatus" class="muted">Idle</p>
+    </section>
+
+    <section class="card transcript">
+      <h2>Transcript</h2>
+      <div id="log"></div>
+    </section>
+
+    <footer>
+      <p>Built for onService training • MVP on Vercel</p>
+    </footer>
+  </div>
+  <script type="module" src="/public/script.js"></script>
+</body>
+</html>
